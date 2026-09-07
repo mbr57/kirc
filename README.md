@@ -34,7 +34,7 @@ Usage
 See `man kirc` for a more usage information.
 
     kirc [-s server] [-p port] [-c channels] [-r realname]
-         [-u username] [-k password] [-a auth] <nickname>
+         [-u username] [-k password] [-a auth] [-n notifications] <nickname>
 
 License
 -------

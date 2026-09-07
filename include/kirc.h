@@ -80,6 +80,7 @@ struct kirc_context {
     char target[KIRC_CHANNEL_LIMIT];
     char auth[MESSAGE_MAX_LEN];
     enum sasl_mechanism mechanism;
+    int notifications;
 };
 
 #endif  // __KIRC_H

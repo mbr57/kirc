@@ -237,7 +237,7 @@ static void protocol_privmsg_direct(struct network *network, struct event *event
  *
  * Displays a message sent to a channel. Shows nickname in bold,
  * channel name in brackets, and message text. Notifies with a
- * sound and a bold cyan message text when the message mentions
+ * sound and a bold yellow message text when the message mentions
  * the nickname of the user.
  */
 static void protocol_privmsg_indirect(struct network *network, struct event *event, struct output *output)
@@ -248,7 +248,7 @@ static void protocol_privmsg_indirect(struct network *network, struct event *eve
         " " BOLD "%s" RESET " [%s]: ",
         protocol_get_time(), event->nickname, event->channel);
 
-    if (strstr(event->message, event->ctx->nickname)) {
+    if (event->ctx->notifications && strstr(event->message, event->ctx->nickname)) {
         output_append(output, "%c" BOLD_YELLOW, BEL);
     }
 

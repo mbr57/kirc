@@ -199,6 +199,8 @@ int config_init(struct kirc_context *ctx)
 
     ctx->mechanism = SASL_NONE;
 
+    ctx->notifications = 0;
+
     config_apply_env(ctx, "KIRC_SERVER", ctx->server, sizeof(ctx->server));
 
     char *env_port = getenv("KIRC_PORT");
@@ -256,7 +258,7 @@ int config_parse_args(struct kirc_context *ctx, int argc, char *argv[])
 
     int opt;
 
-    while ((opt = getopt(argc, argv, "s:p:r:u:k:c:a:")) > 0) {
+    while ((opt = getopt(argc, argv, "s:p:r:u:k:c:a:n")) > 0) {
         switch (opt) {
         case 's':  /* server */
             safecpy(ctx->server, optarg, sizeof(ctx->server));
@@ -288,6 +290,10 @@ int config_parse_args(struct kirc_context *ctx, int argc, char *argv[])
 
         case 'a':  /* SASL authentication */
             config_parse_mechanism(ctx, optarg);
+            break;
+
+        case 'n': /* enable notifications */
+            ctx->notifications = 1;
             break;
 
         case ':':

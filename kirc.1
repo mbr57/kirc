@@ -10,6 +10,7 @@ kirc \- a tiny, dependency-light IRC client
 .RB [\-u " username"]
 .RB [\-k " password"]
 .RB [\-a " auth"]
+.RB [\-n " notifications"]
 .RB <nickname>
 .SH DESCRIPTION
 .B kirc
@@ -91,6 +92,11 @@ For the PLAIN mechanism, you can provide either a pre-encoded BASE64 token or th
 colon-separated values (authzid:authcid:passwd) which will be automatically encoded.
 .br
 Example: "PLAIN:amlsbGVzAGppbGxlcwBzZXNhbWU=" or "PLAIN:alice:alice:password"
+.TP
+.BI \-n " notifications"
+If set, each time an indirect PRIVMSG message containing the nickname of the user is 
+received, a notification sound will be played and the message's text will be displayed
+in bold yellow.
 .SH EXIT STATUS
 .TP
 .B 0
